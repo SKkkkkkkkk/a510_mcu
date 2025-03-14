@@ -1,0 +1,4 @@
+.vscode/
+.cursor/
+build/
+flash.bin
