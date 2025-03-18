@@ -8,7 +8,7 @@ machine LoadPlatformDescription @platforms/boards/stm32f4_discovery-kit.repl
 
 cpu PerformanceInMips 125
 
-$bin?=@build/bootloader.elf
+$bin?=@build/app.elf
 
 showAnalyzer sysbus.usart2
 
@@ -22,6 +22,7 @@ $id2 = `python "print rand.getrandbits(32)"`
 $id3 = `python "print rand.getrandbits(32)"`
 macro reset
 """
+    sysbus.cpu VectorTableOffset 0x8000000
     sysbus LoadELF $bin
 
     sysbus WriteDoubleWord 0x1FFF7A10 $id1

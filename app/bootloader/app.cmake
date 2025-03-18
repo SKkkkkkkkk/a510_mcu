@@ -1,8 +1,12 @@
 # 添加app sources, 注意必须加上CMAKE_CURRENT_LIST_DIR!
 set(app_src
-	${CMAKE_CURRENT_LIST_DIR}/src/main.c
-	${CMAKE_CURRENT_LIST_DIR}/src/startup_stm32f410rx.s
-	${CMAKE_CURRENT_LIST_DIR}/src/system_stm32f4xx.c
+    ${CMAKE_CURRENT_LIST_DIR}/src/startup_stm32f410rx.s
+    ${CMAKE_CURRENT_LIST_DIR}/src/main.c
+    ${CMAKE_CURRENT_LIST_DIR}/src/stm32f4xx_hal_msp.c
+    ${CMAKE_CURRENT_LIST_DIR}/src/stm32f4xx_it.c
+    ${CMAKE_CURRENT_LIST_DIR}/src/syscalls.c
+    ${CMAKE_CURRENT_LIST_DIR}/src/sysmem.c
+    ${CMAKE_CURRENT_LIST_DIR}/src/system_stm32f4xx.c
 
 	${CMAKE_CURRENT_LIST_DIR}/../../STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c
     ${CMAKE_CURRENT_LIST_DIR}/../../STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c
