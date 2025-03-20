@@ -8,9 +8,9 @@ machine LoadPlatformDescription @platforms/boards/stm32f4_discovery-kit.repl
 
 cpu PerformanceInMips 125
 
-$bin?=@build/bootloader.elf
+$bin?=@/home/sk/seehi/rhea/a510_mcu/app/bootloader/build/bootloader.elf
 
-showAnalyzer sysbus.usart2
+# showAnalyzer sysbus.usart2
 
 ### Set random board UNIQUE ID ###
 
@@ -32,4 +32,5 @@ macro reset
 
 runMacro $reset
 machine StartGdbServer 3333 true
+uart_connect sysbus.usart2
 

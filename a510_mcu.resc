@@ -10,8 +10,6 @@ cpu PerformanceInMips 125
 
 $bin?=@flash.bin
 
-showAnalyzer sysbus.usart2
-
 ### Set random board UNIQUE ID ###
 
 python "import _random"
@@ -32,4 +30,5 @@ macro reset
 
 runMacro $reset
 machine StartGdbServer 3333 true
+uart_connect sysbus.usart2
 

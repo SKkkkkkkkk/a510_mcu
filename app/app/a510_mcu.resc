@@ -22,7 +22,7 @@ $id2 = `python "print rand.getrandbits(32)"`
 $id3 = `python "print rand.getrandbits(32)"`
 macro reset
 """
-    sysbus.cpu VectorTableOffset 0x8000000
+    sysbus.cpu VectorTableOffset 0x08004000
     sysbus LoadELF $bin
 
     sysbus WriteDoubleWord 0x1FFF7A10 $id1

@@ -24,10 +24,6 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
-#include <stdint.h>
-#include <stdbool.h>
-#include <stddef.h>
-#include "FLASH_SECTOR_F4.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -68,27 +64,6 @@ int __io_putchar(int ch)
   HAL_UART_Transmit(&huart2, (uint8_t *)&ch, 1, 1000);
   return ch;
 }
-
-static bool is_fwu_needed(void)
-{
-  return false;
-}
-
-static void start_app(void)
-{
-  // reset peripherals
-  HAL_DeInit();
-
-  uint32_t *app_vector_addr = (uint32_t*)0x08004000;
-  uint32_t sp = app_vector_addr[0];
-  uint32_t pc = app_vector_addr[1];
-  asm volatile("msr msp, %0\n"
-               "msr psp, %0\n"
-               "bx %1\n"
-               :
-               : "r"(sp), "r"(pc));
-}
-
 /* USER CODE END 0 */
 
 /**
@@ -122,17 +97,7 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-  printf("bootloader\r\n");
-  if (!is_fwu_needed())
-  {
-    printf("fwu not needed\r\n");
-    start_app();
-  }
-  else
-  {
-    printf("fwu needed\r\n");
-    // fwu_process();
-  }
+  printf("app start\r\n");
   /* USER CODE END 2 */
 
   /* Infinite loop */
