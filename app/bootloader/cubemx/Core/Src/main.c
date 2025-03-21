@@ -87,6 +87,7 @@ static void start_app(void)
                "bx %1\n"
                :
                : "r"(sp), "r"(pc));
+  __builtin_unreachable();
 }
 
 /* USER CODE END 0 */
